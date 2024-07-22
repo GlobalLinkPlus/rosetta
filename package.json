@@ -1,19 +1,28 @@
 {
-  "name": "rosetta",
-  "version": "1.0.0",
+  "name": "@GlobalLinkPlus/rosetta",
+  "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "build": "rm -rf dist && tsup",
-    "translate": "pnpm run build && node ./dist/main.js" 
+    "generate": "ts-node --esm main.ts",
+    "generate-types": "ts-node --esm ./src/generate-types.ts",
+    "copy": "ts-node --esm ./src/copy-translations.ts",
+    "build": "pnpm generate-types && rm -rf dist && tsup && pnpm copy",
+    "translate": "ts-node --esm ./main.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.14.11",
+    "ts-node": "^10.9.2",
     "tsup": "^8.2.0",
     "typescript": "^5.5.3"
+  },
+  "peerDependencies": {
+    "i18next": "*",
+    "react-i18next": "*"
   }
 }

@@ -1,9 +1,7 @@
 import { Translator } from "./src";
 
-const translator = new Translator();
-translator
-.n("home","hello")
-.n("about:section1","banana")
+// const translator = new Translator();
 
+const translator = Translator.loadRosettaStone("./base.json")
 
-await translator.processTranslations("sw")
+await translator.processTranslations("swahili")
