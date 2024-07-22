@@ -1,6 +1,6 @@
 {
   "name": "glp-rosetta",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,6 +8,12 @@
   "files": [
     "dist"
   ],
+  "exports": {
+    "config": {
+      "default": "./dist/config.js",
+      "types": "./dist/config.d.ts"
+    }
+  },
   "scripts": {
     "generate": "ts-node --esm main.ts",
     "generate-types": "ts-node --esm ./src/generate-types.ts",
