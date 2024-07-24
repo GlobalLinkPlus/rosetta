@@ -1,7 +1,7 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
-import en from './translations/en.json'
-import swa from './translations/swahili.json'
+import en from './translations/en.json' assert { type: "json" }
+import swa from './translations/swahili.json' assert { type: "json" }
 import { TranslationNamespaces } from './translations/types'
 
 i18n.use(initReactI18next).init({
@@ -9,16 +9,22 @@ i18n.use(initReactI18next).init({
     lng: 'en',
     resources: {
         en: {
-            translations: en
+            translation: en
         },
         sw: {
-            translations: swa
+            translation: swa
         }
-    } as const
+    } as const,
+    keySeparator: '.',
 })
 
 i18n.languages = ['en', 'sw']
 
-export const t = (t: TranslationNamespaces) => i18n.t(t)
+export const t = (t: TranslationNamespaces) => i18n.t(t, {
+    nsSeparator: '.'
+})
+
+
+i18n.t = t as unknown as typeof i18n.t
 
 export default i18n

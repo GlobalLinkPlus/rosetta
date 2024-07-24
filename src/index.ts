@@ -1,4 +1,5 @@
 import fs from 'fs'
+import Client from '@googleapis/translate'
 interface Base {
     namespace: string
     eng: string
@@ -48,12 +49,12 @@ export class Translator {
     async processTranslations(target: string){
         const result: Record<string,string> = {}
         const errors: Array<any> = []
-        console.log("Translating to::", this.default, target)
 
         await Promise.all(this.default.map(async (base) => {
             if (base == undefined) return
             try {
-                console.log("Translating::", base.namespace)
+                if (base.eng == undefined) return
+                // console.log("Translating::", base.namespace)
                 const response = await fetch(`https://backend.globallinkplus.com/api/translator/`, {
                     method: 'POST',
                     headers: {
@@ -68,7 +69,7 @@ export class Translator {
 
                 if(response.ok){
                     const data = await response.json() as {text: string}
-    
+
                     result[base.namespace] = data.text ?? ""
                     console.log(base.namespace, "✅")
 
@@ -106,7 +107,7 @@ export class Translator {
         for (const base of this.default){
             result[base.namespace] = base.eng
         }
-        const file = "./translations/base.json"
+        const file = "./translations/en.json"
         const fileData = JSON.stringify(result)
         fs.writeFileSync(file, fileData, {
             encoding: 'utf-8'
