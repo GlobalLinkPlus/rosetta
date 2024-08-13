@@ -24,6 +24,6 @@ export const t = (t: TranslationNamespaces) => i18n.t(t, {
     nsSeparator: '.'
 })
 
-
+export type TranslationKeys = TranslationNamespaces
 
 export default i18n
