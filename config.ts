@@ -15,8 +15,9 @@ export const translationConfig = {
             translation: swa
         }
     } as const,
-    keySeparator: '.',
-}
+    keySeparator: false,
+    nsSeparator: '.',
+} as const
 
 i18n.use(initReactI18next).init(translationConfig)
 
