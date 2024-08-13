@@ -25,6 +25,5 @@ export const t = (t: TranslationNamespaces) => i18n.t(t, {
 })
 
 
-i18n.t = t as unknown as typeof i18n.t
 
 export default i18n

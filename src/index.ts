@@ -52,38 +52,39 @@ export class Translator {
 
         await Promise.all(this.default.map(async (base) => {
             if (base == undefined) return
-            try {
-                if (base.eng == undefined) return
-                // console.log("Translating::", base.namespace)
-                const response = await fetch(`https://backend.globallinkplus.com/api/translator/`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        source: 'en',
-                        target,
-                        text: base.eng
-                    })
-                })
+            result[base.namespace] = "empty_translation"
+            // try {
+            //     if (base.eng == undefined) return
+            //     // console.log("Translating::", base.namespace)
+            //     const response = await fetch(`https://backend.globallinkplus.com/api/translator/`, {
+            //         method: 'POST',
+            //         headers: {
+            //             'Content-Type': 'application/json'
+            //         },
+            //         body: JSON.stringify({
+            //             source: 'en',
+            //             target,
+            //             text: base.eng
+            //         })
+            //     })
 
-                if(response.ok){
-                    const data = await response.json() as {text: string}
+            //     if(response.ok){
+            //         const data = await response.json() as {text: string}
 
-                    result[base.namespace] = data.text ?? ""
-                    console.log(base.namespace, "✅")
+            //         result[base.namespace] = data.text ?? ""
+            //         console.log(base.namespace, "✅")
 
-                }
-                else{
-                    console.log(base.namespace, "❌")
-                    console.log("translation error::", response.statusText, response.status)
-                }
-            }
-            catch (e)
-            {
-                console.log(base.namespace, "❌")
-                console.log("translation error::", e)
-            }
+            //     }
+            //     else{
+            //         console.log(base.namespace, "❌")
+            //         console.log("translation error::", response.statusText, response.status)
+            //     }
+            // }
+            // catch (e)
+            // {
+            //     console.log(base.namespace, "❌")
+            //     console.log("translation error::", e)
+            // }
 
         }))
         // for (const base of this.default){
