@@ -4,7 +4,7 @@ import en from './translations/en.json' assert { type: "json" }
 import swa from './translations/swahili.json' assert { type: "json" }
 import { TranslationNamespaces } from './translations/types'
 
-i18n.use(initReactI18next).init({
+export const translationConfig = {
     fallbackLng: 'en',
     lng: 'en',
     resources: {
@@ -16,7 +16,9 @@ i18n.use(initReactI18next).init({
         }
     } as const,
     keySeparator: '.',
-})
+}
+
+i18n.use(initReactI18next).init(translationConfig)
 
 i18n.languages = ['en', 'sw']
 
