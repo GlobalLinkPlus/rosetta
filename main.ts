@@ -5,4 +5,8 @@ import { Translator } from "./src";
 const translator = Translator.loadRosettaStone("./base.json")
 translator.generateBase()
 
-await translator.processTranslations("swahili");
+// await translator.processTranslations("sw");
+
+await translator.translateFromText("es")
+
+// await translator.generateExcelSheet("swahili");
