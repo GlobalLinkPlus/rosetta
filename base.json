@@ -153,7 +153,9 @@
     "top-seller": "Top Seller Products",
     "channels": "Channels",
     "channels-units": "Units",
+    "channels-units-total": "Total Units",
     "channels-sales": "Sales",
+    "channels-sales-total": "Total Sales",
     "channels-sales-weekly": "Weekly",
     "channels-sales-monthly": "Monthly",
     "channels-sales-yearly": "Yearly",
@@ -216,8 +218,11 @@
         "images": "Images",
         "attributes": "Attributes",
         "variations": "Variations",
-        "videos/files": "Videos/Files",
-        "review": "variations"
+        "videos-files": "Videos/Files",
+        "review": "Review"
+      },
+      "bulk-upload": {
+        "bulk-upload": "Bulk Upload"
       }
     },
     "partners-sidebar": {
@@ -316,8 +321,9 @@
       "city-text": "Enter City",
       "partner-nameId": "Partner Name Id",
       "partner-nameId-text": "Enter Partner Name Id example: PVT999090",
-      "state": "State",
-      "state-text": "Enter State ",
+      "autogenerate": "Auto-Generate",
+      "state": "Region/State",
+      "state-text": "Enter Region/State ",
       "country": "Country",
       "country-text": "Select Country",
       "zip-postal": "Zip/Postal Code",
@@ -369,7 +375,13 @@
       "type": "Type",
       "group-name": "Group Name",
       "company-name": "Company Name",
-      "contact-person": "Contact Person"
+      "contact-person": "Contact Person",
+      "send-group-email": "Send Group Email",
+      "group-partners": "Group Partners"
+    },
+    "edit-partner": {
+      "title": "Edit Partner Details",
+      "no-partner-found": "No Partner Found"
     }
   },
   "customers": {
@@ -415,12 +427,12 @@
       "city": "City",
       "city-text": "Enter City",
       "state": "State",
-      "state-text": "Enter State ",
+      "state-text": "Enter State/Region",
       "country": "Country",
       "country-text": "Select Country",
       "zip-postal": "Zip/Postal Code",
       "zip-postal-text": "Enter Zip/Postal Code",
-      "compny-logo": "Company Logo",
+      "company-logo": "Company Logo",
       "first-name": "First Name",
       "first-name-text": "Enter First Name",
       "last-name": "Last Name",
@@ -462,22 +474,28 @@
       "payment-terms": "Payment Terms",
       "payment-terms-text": "Select Payment Terms",
       "custom": "Custom",
+      "preferred-carrier": "Preferred Carrier",
+      "preferred-carrier-text": "Enter Preferred Carrier",
+      "dropship": "Dropship",
+      "dropship-text": "Select Dropship",
       "shipping-allowance": "Shipping Allowance",
       "shipping-allowance-text": "Enter Dollar Amount",
-      "shpping-allowance-discount": "Shipping Allowance Discount",
-      "shpping-allowance-discount-text": "Enter Percentage",
+      "shipping-allowance-discount": "Shipping Allowance Discount",
+      "shipping-allowance-discount-text": "Enter Percentage",
       "shipping-params": "Shipping Parameters",
-      "shipping-params-text": "Enter Shipping Parameters",
+      "shipping-params-text": "Ship Complete or Ship As Available",
       "location-minimum-inventory": "Location Minimum Inventory",
       "location-minimum-inventory-text": "Enter Location Minimum Inventory",
       "location-maximum-inventory": "Location Maximum Inventory",
       "location-maximum-inventory-text": "Enter Location Maximum Inventory",
+      "pricing-channel": "Pricing Channel",
       "channel": "Channel",
       "channel-text": "Select Channel",
       "upload-type": "Upload Type",
       "upload-type-text": "Select Upload Type",
       "additional-field": "Add Additional Field",
-      "edit-customer": "Edit Customer"
+      "edit-customer": "Edit Customer",
+      "no-customer-found": "No Customer Found"
     },
     "tables": {
       "customer-logo": "Customer Logo",
@@ -486,13 +504,17 @@
       "inventory-minmax": "Inventory Min/Max",
       "contact-details": "Contact Details",
       "customer-name": "Customer Name",
-      "contact-person": "Contact Person"
+      "contact-person": "Contact Person",
+      "group-name": "Group Name",
+      "send-group-email": "Send Group Email",
+      "group-customers": "Group Customers"
     }
   },
   "channels": {
     "channels": "Channels",
     "channels-text": "The Channels modular will allow you to add new connections of either API, EDI, or manual. Once set up these will populate under all Product Channel dropdowns as well as push API and EDI orders to your Sales modular.",
     "active-channels": "Active Channels",
+    "no-active-channels": "No Active Channels",
     "nonactive-channels": "Non-Active Channels",
     "channels-forms": {
       "custom": "Custom",
@@ -567,7 +589,34 @@
       "channels-home": "Channels Home",
       "webstore-home": "Webstore Home",
       "helpdesk-home": "Helpdesk Home",
-      "admin-home": "Admin Home"
+      "admin-home": "Admin Home",
+      "overview": "Overview",
+      "tutorial": "Tutorial"
+    },
+    "submit-tickets": {
+      "submit-ticket-text": "Have you ran into a bug, error, or any problem, don't hesitate to submit a ticket. We're here to help! Your input is crucial in resolving issues promptly and improving our services. Rest assured, our team will review and address your ticket as quickly as possible. Thank you for your cooperation.",
+      "ticket-title": "Ticket Title",
+      "ticket-title-text": "Enter Feedback Ticket Title",
+      "area-issue": "Area of Issue",
+      "area-issue-text": "Select Area of Issue",
+      "type-issue": "Type of Issue",
+      "type-issue-text": "Select Type of Issue",
+      "issue-frequency": "Issue Frequency",
+      "issue-frequency-text": "Select Issue Frequency",
+      "description": "Ticket Description",
+      "description-text": "Enter Ticket Description here",
+      "select-file": "Select File",
+      "add-file": "Add File",
+      "no-file-chosen": "No File Chosen",
+      "max-file6": "Maximum files is 6 at a time"
+    },
+    "give-feedback-form": {
+      "give-feedback-text": "At Global Link+, we deeply value your feedback, as it helps us improve and deliver exceptional services.Together, we are building a stronger and more connected future, and your feedback is an essential part of that journey. Thank you for being an essential part of the Global Link+ family!",
+      "give-feedback-title": "Feedback Title",
+      "give-feedback-title-text": "Enter Feedback Title",
+      "description": "Feedback Description",
+      "description-text": "Enter Feedback Description here",
+      "give-feedback": "Give Feedback"
     }
   },
   "admin": {
@@ -737,9 +786,11 @@
     "remainder-weight": "Remaining Weight",
     "list": "List",
     "review": "Review PO",
+    "customer-view": "Customer View",
     "select-po-template": "Select PO Template",
     "po-forms": {
       "select-partner": "Select Partner",
+      "select-customer": "Select Customer",
       "select-partner-text": "Select Partner",
       "select-container": "Select Container",
       "select-container-text": "Select Container Type",
@@ -775,7 +826,7 @@
       "height": "Height",
       "Cubic": "Cubic",
       "Variance": "Variance",
-      "Weight Capacity": "Weight Capacity",
+      "Weight": "Weight Capacity",
       "add-container": "Add Container",
       "update-container": "Update Container",
       "history": "Created Container History",
@@ -793,7 +844,7 @@
       "amount": "Amount",
       "model": "Model",
       "product-title": "Product Title",
-      "container-name": "Container Type",
+      "container-name": "Container",
       "order-no": "Order Number",
       "total-value": "Total Value",
       "total-cube": "Total Cube",
@@ -806,7 +857,8 @@
       "height": "Height",
       "cube": "Cube Capacity",
       "variance": "Variance",
-      "weight": "Weight Capacity"
+      "weight": "Weight Capacity",
+      "close": "Close"
     }
   },
   "logistics": {
@@ -815,6 +867,7 @@
     "upload": "Upload",
     "filter": "Filter",
     "product-name": "Product Name",
+    "in-stock-percent": "In Stock Percentage",
     "quantity": "Quantity",
     "sku": "SKU",
     "search": "search",
@@ -852,6 +905,9 @@
       "Saturday": "Saturday",
       "Sunday": "Sunday",
       "same-monday": "Same as Monday",
+      "days-hours-selected": "Days and Hours Selected",
+      "days": "Days",
+      "times": "Times",
       "location-contact-info": "Location Contact Information",
       "contact-name": "Contact Name",
       "contact-name-text": "Enter Contact Name",
@@ -900,6 +956,7 @@
     "consignment": "Consignment",
     "consignment-text": "Create a consignment",
     "consigned-products": "Consigned Products",
+    "consign": "Consign",
     "revert": "Revert",
     "override-notes": "Override Notes",
     "retrieval-date": "Retrieval Date",
@@ -933,6 +990,11 @@
       "type-submission": "Type of Submission",
       "date-submission": "Date of Submission",
       "view-submission": "View Submission"
+    },
+    "tooltips": {
+      "coo": "Customer Orders Completed",
+      "conh": "Customer Orders In Process",
+      "total-value": "Total Value in Inventory"
     }
   },
   "sales": {
@@ -997,11 +1059,14 @@
       "shipping-method-text": "Select Shipping Method",
       "carrier": "Carrier",
       "carrier-text": "Enter Carrier",
-      "submit": "Submit Order"
+      "submit": "Submit Order",
+      "search-order": "Search Order"
     },
     "create-reccurring": "Create Recurring Order",
     "view-reccurring": "View Recurring Order",
     "sales-history": "Sales History",
+    "next-order": "Next Order",
+    "daily-weekly-monthly-quarterly-bi-yearly-yearly": "Daily, Weekly, Monthly, Quaterly, Bi-Yearly, Yearly",
     "tables": {
       "date": "Date",
       "order-number": "Order Number",
@@ -1027,7 +1092,8 @@
       "unit-weight": "Unit Weight",
       "total-weight": "Total Weight",
       "freight-class": "Freight Class",
-      "piece-count": "Piece Count"
+      "piece-count": "Piece Count",
+      "select-order": "Select Order"
     }
   },
   "utils": {
@@ -1058,9 +1124,13 @@
       "details": "Details",
       "quantity": "Quantity",
       "no-records": "No Records Found",
-      "no-chart-data": "No Chart Data Found"
+      "no-chart-data": "No Chart Data Found",
+      "filter-by": "Filter by",
+      "order-by": "Order By",
+      "search": "Search ..."
     },
     "forms": {
+      "add": "Add",
       "submit": "Submit",
       "selected": "Selected",
       "edit": "Edit",
@@ -1069,9 +1139,12 @@
       "enter": "Enter",
       "connect": "Connect",
       "save": "Save",
-      "next": "Next"
+      "next": "Next",
+      "field-name": "Field Name",
+      "field-value": "Field Value"
     },
     "select-year": "Select Year",
+    "select-month": "Select Month",
     "months": {
       "january": "January",
       "february": "February",

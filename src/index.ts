@@ -90,39 +90,17 @@ export class Translator {
                 return false
             }
         })
-        console.log("CURRENT RETRIES::", retries)
-        console.log("UNTRANSLATED_COUNT::", untranslated.length)
-        // console.log("Untranslated::", untranslated)
         const asBase = untranslated?.map((uns) => {
             return {
                 namespace: uns[0],
                 eng: uns[1]
             } as Base
         })
-
-    // await Promise.all(asBase.map(async (base) => {
-    //     try {
-    //         const _resp = await axios.post<{ text: string }>(`https://backend.globallinkplus.com/api/translator/`, {
-    //             source: 'en',
-    //             target,
-        //             text: base.eng ?? ""
-        //         })
-        //         console.log("Response::", _resp.data)
-        //         if (_resp.data.text) {
-        //             result[base.namespace] = _resp.data.text
-        //             console.log(base.namespace, "✅")
-        //         }
-        //     }
-        //     catch (e) {
-        //         console.log(base.namespace, "❌")
-        //         console.log("translation error::", e)
-        //     }
-        // }))
         if ((retries ?? 0) < 20) {
 
             const serializedText = this.serializeToText(asBase)
 
-            const response = await axios.post<{ text: string }>('https://backend.globallinkplus.com/api/translator/', {
+            const response = await axios.post<{ text: string }>('http://3.87.245.245:7200/api/translator/', {
                 source: 'en',
                 target,
                 text: serializedText
@@ -145,8 +123,7 @@ export class Translator {
 
     async translateFromText(target: string) {
         const serialized = this.serializeToText()
-        console.log(`Serialized::`, serialized)
-        const response = await axios.post<{ text: string }>('https://backend.globallinkplus.com/api/translator/', {
+        const response = await axios.post<{ text: string }>('http://3.87.245.245:7200/api/translator/', {
             source: 'en',
             target,
             text: serialized
@@ -273,23 +250,38 @@ export class Translator {
         })
     }
 
-    generateExcelSheet(targetLanguage: string) {
+    generateExcelSheet(targetLanguages: Array<string>) {
         const keys = this.default.map((base) => base.namespace)
-
         const lines: Array<string> = []
+        const languageSources = targetLanguages.map((lang) => {
+            const contents = fs.readFileSync(`./translations/${lang}-text-serde.json`, {
+                encoding: 'utf-8'
+            })
+            const data = JSON.parse(contents)
+
+            return data as Record<string, string>
+        })
+
+        const getCurrentTranslations = (namespace: string) => {
+            const languageLines = languageSources.map((source) => {
+                return source[namespace] ?? "NO_TRANSLATION"
+            })
+
+            return languageLines?.join("+")
+        }
 
         for (const key of keys) {
             if (key === undefined || key === 'undefined') continue
-            lines.push(`${key}+${this.default.find((base) => base.namespace === key)?.eng ?? "NO_ENGLISH"}+TRANSLATION_HERE\n`)
+            lines.push(`${key}+${this.default.find((base) => base.namespace === key)?.eng ?? "NO_ENGLISH"}+${getCurrentTranslations(key)}\n`)
         }
 
-        const file = `./translations/${targetLanguage}.csv`
+        const file = `./translations/rosetta-stone.csv`
 
         const stream = fs.createWriteStream(file, {
             encoding: 'utf-8'
         })
 
-        const header = `NAMESPACE+ENGLISH+${targetLanguage}\n`
+        const header = `NAMESPACE+ENGLISH+${targetLanguages.join("+")}\n`
 
         stream.write(header)
 

@@ -1,4 +1,5 @@
 import { Translator } from "./src";
+import fs from "fs";
 
 // const translator = new Translator();
 
@@ -9,4 +10,14 @@ translator.generateBase()
 
 await translator.translateFromText("es")
 
-// await translator.generateExcelSheet("swahili");
+await translator.translateFromText("sw")
+
+await translator.translateFromText("id")
+
+// await translator.generateExcelSheet(['sw', 'id', 'es']);
+
+// const serialized = translator.serializeToText()
+
+// fs.writeFileSync("./base.txt", serialized, {
+//     encoding: 'utf-8'
+// })
