@@ -4,9 +4,9 @@ import fs from "fs";
 // const translator = new Translator();
 
 const translator = Translator.loadRosettaStone("./base.json")
-// translator.generateBase()
+translator.generateBase()
 
-// await translator.processTranslations("sw");
+await translator.translateFromText("zh");
 
 // await translator.translateFromText("es")
 
@@ -23,4 +23,4 @@ const translator = Translator.loadRosettaStone("./base.json")
 // })
 
 
-await translator.deserializeTSV('rosetta')
+// await translator.deserializeTSV('rosetta')

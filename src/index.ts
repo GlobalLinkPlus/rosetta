@@ -321,12 +321,14 @@ export class Translator {
 
         console.log("Matcher::", matcher)
 
-
+        const oldEnglish: Record<string, string> = {}
         for (const line of lines.slice(1)) {
 
             const parts = line.split('\t')
 
             const firstParts = parts.slice(0, 2)
+
+
 
             const languageTranslations = parts.slice(2)
 
@@ -334,7 +336,7 @@ export class Translator {
             for (const [index, translation] of languageTranslations.entries()) {
                 const language = matcher[index]
                 nanu[language][firstParts[0]] = translation.replace('\r', '')
-
+                oldEnglish[firstParts[0]] = firstParts[1]
             }
 
         }
@@ -344,16 +346,33 @@ export class Translator {
         const allCurrentKeys = Object.keys(nanu[firstLanguage])
 
 
-        const newKeys = this.default.filter((base) => {
-            return !allCurrentKeys.includes(base.namespace)
-        })
+        const newKeys: Array<Base> = []
 
-        console.log("New keys::", newKeys)
 
-        const serializedTranslations = this.serializeToText(newKeys)
+        try {
+            const cFileData = fs.readFileSync(`./translations/en.json`, { encoding: 'utf-8' })
+            const currentTranslations: Record<string, string> = JSON.parse(cFileData)
 
+            for (const [key, value] of Object.entries(currentTranslations)) {
+                if (oldEnglish[key]?.trim().toLocaleLowerCase() !== value?.trim().toLocaleLowerCase()) {
+                    console.log("Conflict detected::", key)
+                    newKeys.push({
+                        namespace: key,
+                        eng: value
+                    })
+                }
+            }
+
+        }
+        catch (e) {
+            console.log("Error reading current translations::", e)
+        }
 
         for (const language of Object.keys(nanu)) {
+
+
+
+            const serializedTranslations = this.serializeToText(newKeys)
 
             const response = await axios.post<{ text: string }>('http://3.87.245.245:7200/api/translator/', {
                 source: 'en',
@@ -371,7 +390,7 @@ export class Translator {
         }
 
         for (const [language, translations] of Object.entries(nanu)) {
-            const file = `./translations/${language}-nanu-1.json`
+            const file = `./translations/${language}-text-serde.json`
 
             const fileData = JSON.stringify(translations)
 

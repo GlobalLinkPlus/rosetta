@@ -4,6 +4,7 @@ import en from './translations/en.json' assert { type: "json" }
 import swa from './translations/sw-text-serde.json' assert { type: "json" }
 import idTranslation from './translations/id-text-serde.json' assert { type: "json" }
 import es from './translations/es-text-serde.json' assert { type: "json" }
+import zh from './translations/zh-text-serde.json' assert { type: "json" }
 import { TranslationNamespaces } from './translations/types'
 
 export const translationConfig = {
@@ -21,6 +22,9 @@ export const translationConfig = {
         },
         es: {
             translation: es
+        },
+        zh: {
+            translation: zh
         }
     } as const,
     keySeparator: false,
@@ -29,7 +33,7 @@ export const translationConfig = {
 
 i18n.use(initReactI18next).init(translationConfig)
 
-i18n.languages = ['en', 'sw', 'id', 'es']
+i18n.languages = ['en', 'sw', 'id', 'es', 'zh']
 
 export const t = (t: TranslationNamespaces) => i18n.t(t, {
     nsSeparator: '.'
