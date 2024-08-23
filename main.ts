@@ -4,15 +4,15 @@ import fs from "fs";
 // const translator = new Translator();
 
 const translator = Translator.loadRosettaStone("./base.json")
-translator.generateBase()
+// translator.generateBase()
 
 // await translator.processTranslations("sw");
 
-await translator.translateFromText("es")
+// await translator.translateFromText("es")
 
-await translator.translateFromText("sw")
+// await translator.translateFromText("sw")
 
-await translator.translateFromText("id")
+// await translator.translateFromText("id")
 
 // await translator.generateExcelSheet(['sw', 'id', 'es']);
 
@@ -21,3 +21,6 @@ await translator.translateFromText("id")
 // fs.writeFileSync("./base.txt", serialized, {
 //     encoding: 'utf-8'
 // })
+
+
+await translator.deserializeTSV('rosetta')

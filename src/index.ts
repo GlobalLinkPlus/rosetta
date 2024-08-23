@@ -296,4 +296,91 @@ export class Translator {
 
 
     }
+
+
+    async deserializeTSV(name: string) {
+        const contents = fs.readFileSync(`./tsvs/${name}.tsv`, {
+            encoding: 'utf-8'
+        })
+
+        const lines = contents.split("\n")
+        const firstLine = lines[0]
+
+        const nanu: Record<string, Record<string, string>> = {}
+        const matcher: Record<number, string> = {}
+
+        const topSection = firstLine.split('\t')
+        const languages = topSection.slice(2)
+
+        for (const lang of languages) {
+            nanu[lang.replace('\r', '')] = {}
+            const index = languages.indexOf(lang)
+
+            matcher[index] = lang.replace('\r', '')
+        }
+
+        console.log("Matcher::", matcher)
+
+
+        for (const line of lines.slice(1)) {
+
+            const parts = line.split('\t')
+
+            const firstParts = parts.slice(0, 2)
+
+            const languageTranslations = parts.slice(2)
+
+
+            for (const [index, translation] of languageTranslations.entries()) {
+                const language = matcher[index]
+                nanu[language][firstParts[0]] = translation.replace('\r', '')
+
+            }
+
+        }
+
+        const firstLanguage = matcher[0]
+
+        const allCurrentKeys = Object.keys(nanu[firstLanguage])
+
+
+        const newKeys = this.default.filter((base) => {
+            return !allCurrentKeys.includes(base.namespace)
+        })
+
+        console.log("New keys::", newKeys)
+
+        const serializedTranslations = this.serializeToText(newKeys)
+
+
+        for (const language of Object.keys(nanu)) {
+
+            const response = await axios.post<{ text: string }>('http://3.87.245.245:7200/api/translator/', {
+                source: 'en',
+                target: language,
+                text: serializedTranslations
+            })
+
+
+            const deserialized = await this.deserializeFromText(response.data.text, language, newKeys, 20)
+
+            for (const [key, value] of Object.entries(deserialized)) {
+                nanu[language][key] = value
+            }
+
+        }
+
+        for (const [language, translations] of Object.entries(nanu)) {
+            const file = `./translations/${language}-nanu-1.json`
+
+            const fileData = JSON.stringify(translations)
+
+            fs.writeFileSync(file, fileData, {
+                encoding: 'utf-8'
+            })
+        }
+
+
+        console.log("Deserialized TSV")
+    }
 }
