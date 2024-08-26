@@ -55,6 +55,10 @@
     "company-text": "Company...",
     "email": "Email",
     "email-text": "Email...",
+    "password": "Password",
+    "remember-me": "Remember Me",
+    "forgot-password": "Forgot Password?",
+    "dont-have-account": "Don't have an account?",
     "phone": "Phone Number",
     "phone-text": "Phone Number...",
     "inquiry": "Inquire/Questions",
@@ -131,6 +135,25 @@
     "list-8": "Top of the line file management system",
     "list-9": "More features to come everyday",
     "book": "Book a Demo"
+  },
+  "reqdemo": {
+    "first-name": "First Name",
+    "last-name": "Last Name",
+    "company": "Company",
+    "no-employees": "Number of employees",
+    "select-range": "Select a range",
+    "company-type": "Company Type",
+    "company-type-text": "Retailer, MFG, 3PL",
+    "monthly-sales": "Monthly Sales",
+    "monthly-sales-text": "Sales Range",
+    "position": "Position",
+    "position-text": "CEO, Executive Position; COO"
+  },
+  "forgot-pwd": {
+    "forgot-pwd": "Forgot Password?",
+    "email-text": "Enter the email address or Phone Number associated with your account where verification code shall be sent",
+    "email": "Email Address",
+    "continue": "Continue"
   },
   "dashboard": {
     "dashboard": "Dashboard",
@@ -621,6 +644,7 @@
   },
   "admin": {
     "admin": "Admin",
+    "error-fetching-data": "Error in fetching company info data.Please check again later.",
     "admin-forms": {
       "first-name": "First Name",
       "first-name-text": "Enter First Name",
@@ -653,6 +677,7 @@
       "streetname": "Street Name",
       "streetname-text": "Enter Street Name",
       "dept": "Department",
+      "depts": "Departments",
       "dept-text": "Add Department",
       "added-depts": "Added Departments:",
       "industry": "Industry",
@@ -687,7 +712,14 @@
       "send-password": "Send",
       "update-user": "Update User",
       "disable-user": "Disable User",
-      "delete-user": "Delete User"
+      "delete-user": "Delete User",
+      "additional-customs": "Additional: Customs",
+      "remove-custom-field": "Remove Custom Field",
+      "select-user": "Select User...",
+      "user-title": "User Title",
+      "user-title-text": "Enter User Title",
+      "super-admin": "Super Admin",
+      "add-other-payment": "Add Other Payment Type"
     },
     "view": "View",
     "banking": "Banking",
@@ -698,11 +730,17 @@
     "white-bg-icon": "White Background Icon",
     "customize-colors": "Customize your Dashboard Color",
     "hex-code": "Hex Code",
-    "selected-preffered-color": "Selected Prefered Color",
+    "selected-preffered-color": "Select Prefered Color",
     "select-color": "Select Color",
+    "black": "Black",
+    "white": "White",
     "reset": "Reset",
+    "admin-users": "Admin: Users",
+    "users-info": "Users Information",
+    "update-permission": "Update Permission",
     "permissions": {
       "permissions": "Permissions",
+      "permission": "Permission",
       "user-permissions": "User Permissions",
       "create-user-groups": "Create User Groups",
       "create-groups": "Create Groups",
@@ -716,11 +754,18 @@
       "expand-all": "Expand All",
       "group-permissions": "Group Permissions",
       "save-user-permissions": "Save User Permissions",
-      "save-group-permissions": "Save Group Permissions"
+      "save-group-permissions": "Save Group Permissions",
+      "set-permissions": "Set Permissions",
+      "select-users": "Select Users",
+      "app": "App",
+      "groups-section": "Groups Section",
+      "collapsible-all": "Collapsible All"
     },
     "preferences": {
+      "preferences": "Preferences",
       "universal-preferences": "Universal Defaults",
       "metric-system": "Metric System",
+      "imperial-system": "Imperial System",
       "metric-system-text": "Which metric system suits you: the versatile, globally embraced metric system with its logical units like meters and grams, or the imperial metric system, used in some regions, featuring feet, pounds, and gallons? Which do you prefer for measurements: simplicity and universality or familiarity and tradition?",
       "currency": "Currency",
       "currency-text": "Customize your software experience by selecting your preferred currency value. Tailoring to your region or preference ensures accurate transactions and a seamless financial interface within the software.",
@@ -870,7 +915,7 @@
     "in-stock-percent": "In Stock Percentage",
     "quantity": "Quantity",
     "sku": "SKU",
-    "search": "search",
+    "search": "search ...",
     "locations": "Locations",
     "locations-list": "Locations List",
     "create": "Create",
@@ -1127,7 +1172,12 @@
       "no-chart-data": "No Chart Data Found",
       "filter-by": "Filter by",
       "order-by": "Order By",
-      "search": "Search ..."
+      "search": "Search ...",
+      "10-page": "10 per page",
+      "15-page": "15 per page",
+      "25-page": "25 per page",
+      "50-page": "50 per page",
+      "100-page": "100 per page"
     },
     "forms": {
       "add": "Add",
@@ -1177,6 +1227,7 @@
       "coming-soon-text": "This feature is coming soon."
     },
     "loading": "Loading...",
+    "saving": "Saving...",
     "no-results": "No Results",
     "select-drop-image": "Select or Drop Image",
     "or": "or",
