@@ -13,8 +13,9 @@ translator.generateBase();
 // await translator.translateFromText("sw");
 
 // await translator.translateFromText("id");
+// await translator.translateFromText("tr");
 
-await translator.generateExcelSheet(["sw", "id", "es", "zh"]);
+await translator.generateExcelSheet(["sw", "id", "es", "zh", "tr"]);
 
 // const serialized = translator.serializeToText()
 
