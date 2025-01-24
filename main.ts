@@ -6,11 +6,11 @@ import fs from "fs";
 const translator = Translator.loadRosettaStone("./base.json");
 translator.generateBase();
 
+// await translator.translateFromText("sw");
+
 // await translator.translateFromText("zh");
 
 // await translator.translateFromText("es");
-
-// await translator.translateFromText("sw");
 
 // await translator.translateFromText("id");
 // await translator.translateFromText("tr");
