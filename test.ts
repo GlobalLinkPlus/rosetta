@@ -3,10 +3,7 @@ import i18n, { t } from "./config";
 await i18n
  .changeLanguage("sw")
  .then(() => {
-  console.log(
-   "Translation sw::",
-   t("catalog:forms:shipping:shipping-preferred-text2")
-  );
+  console.log("Translation sw::", t("support:modulars-section:order"));
  })
  .then(() => {});
 await i18n.changeLanguage("id").then(() => {
