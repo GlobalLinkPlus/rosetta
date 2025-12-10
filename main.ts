@@ -8,6 +8,7 @@ import { Translator } from "./src";
  * 1. ALWAYS START: Keep lines 16-17 uncommented to load and generate base
  * 2. TRANSLATE ONE LANGUAGE AT A TIME: Uncomment ONE language line, run, wait for "Done", then comment it out
  * 3. GENERATE EXCEL (Optional): After all languages are done, uncomment line 35
+ * 4. Edit config to match the new translations if needed
  *
  * Run command: pnpm translate
  *
@@ -30,6 +31,10 @@ translator.generateBase();
 // await translator.translateFromText("id"); // Indonesian - Run this fourth
 
 // await translator.translateFromText("tr"); // Turkish - Run this fifth
+
+// await translator.translateFromText("ms"); // Malaysian - Run sequantially as needed
+
+// await translator.translateFromText("vi"); // Vietnamese
 
 // STEP 3: (Optional) Generate Excel/CSV file with all translations for review
 // Only uncomment after ALL translations above are complete

@@ -6,6 +6,8 @@ import idTranslation from "./translations/id-text-serde.json" assert { type: "js
 import es from "./translations/es-text-serde.json" assert { type: "json" };
 import zh from "./translations/zh-text-serde.json" assert { type: "json" };
 import tr from "./translations/tr-text-serde.json" assert { type: "json" };
+import ms from "./translations/ms-text-serde.json" assert { type: "json" };
+import vi from "./translations/vi-text-serde.json" assert { type: "json" };
 import { TranslationNamespaces } from "./translations/types";
 
 export const translationConfig = {
@@ -30,6 +32,12 @@ export const translationConfig = {
   tr: {
    translation: tr,
   },
+  ms: {
+   translation: ms,
+  },
+  vi: {
+   translation: vi,
+  },
  } as const,
  keySeparator: false,
  nsSeparator: ".",
@@ -37,7 +45,7 @@ export const translationConfig = {
 
 i18n.use(initReactI18next).init(translationConfig);
 
-i18n.languages = ["en", "sw", "id", "es", "zh", "tr"];
+i18n.languages = ["en", "sw", "id", "es", "zh", "tr", "ms", "vi"];
 
 export const t = (t: TranslationNamespaces) =>
  i18n.t(t, {
